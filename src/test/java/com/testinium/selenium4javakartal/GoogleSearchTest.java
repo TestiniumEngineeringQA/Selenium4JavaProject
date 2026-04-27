@@ -51,6 +51,13 @@ public class GoogleSearchTest {
         System.out.println("Page title: " + driver.getTitle());
         Thread.sleep(5000); // 3 saniye bekler
 
+        // 1. COMMAND_PARAMETER
+        String demoParam = System.getProperty("commandParameter");
+        // 2. ENVIRONMENT_PARAMETER
+        String denemeParam = System.getenv("environmentParameter");
+
+        System.out.println(">>> [COMMAND_PARAMETER] demo: " + demoParam);
+        System.out.println(">>> [ENVIRONMENT_PARAMETER] deneme: " + denemeParam);
 
         driver.quit();
     }

@@ -49,7 +49,7 @@ public class GoogleSearchTest {
 
         driver.get("https://www.amazon.com");
         System.out.println("Page title: " + driver.getTitle());
-        Thread.sleep(1200000); // 3 saniye bekler
+        Thread.sleep(5000); // 3 saniye bekler
 
         // 1. COMMAND_PARAMETER
         String demoParam = System.getProperty("commandParameter");

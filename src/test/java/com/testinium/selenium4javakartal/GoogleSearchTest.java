@@ -62,4 +62,56 @@ public class GoogleSearchTest {
         driver.quit();
     }
 
+    @Test
+    public void runDefaultTest3() throws MalformedURLException, InterruptedException {
+        ChromeOptions options =  new ChromeOptions();
+        // Testinium anahtarı gerekiyorsa Options üstünden ver:
+
+        // İstersen browser'ı env'den oku
+        //String browserName = System.getenv("browser");
+
+        // RemoteWebDriver yerine kendi TestiniumSeleniumDriver'ını options ile başlat
+        RemoteWebDriver driver = new TestiniumSeleniumDriver(new URL("http://host.docker.internal:4444/wd/hub"), options);
+
+        driver.get("https://www.google.com");
+        System.out.println("Page title: " + driver.getTitle());
+        Thread.sleep(5000); // 3 saniye bekler
+
+        // 1. COMMAND_PARAMETER
+        String demoParam = System.getProperty("commandParameter");
+        // 2. ENVIRONMENT_PARAMETER
+        String denemeParam = System.getenv("environmentParameter");
+
+        System.out.println(">>> [COMMAND_PARAMETER] demo: " + demoParam);
+        System.out.println(">>> [ENVIRONMENT_PARAMETER] deneme: " + denemeParam);
+
+        driver.quit();
+    }
+
+    @Test
+    public void runDefaultTest4() throws MalformedURLException, InterruptedException {
+        ChromeOptions options =  new ChromeOptions();
+        // Testinium anahtarı gerekiyorsa Options üstünden ver:
+
+        // İstersen browser'ı env'den oku
+        //String browserName = System.getenv("browser");
+
+        // RemoteWebDriver yerine kendi TestiniumSeleniumDriver'ını options ile başlat
+        RemoteWebDriver driver = new TestiniumSeleniumDriver(new URL("http://host.docker.internal:4444/wd/hub"), options);
+
+        driver.get("https://www.microsoft.com");
+        System.out.println("Page title: " + driver.getTitle());
+        Thread.sleep(5000); // 3 saniye bekler
+
+        // 1. COMMAND_PARAMETER
+        String demoParam = System.getProperty("commandParameter");
+        // 2. ENVIRONMENT_PARAMETER
+        String denemeParam = System.getenv("environmentParameter");
+
+        System.out.println(">>> [COMMAND_PARAMETER] demo: " + demoParam);
+        System.out.println(">>> [ENVIRONMENT_PARAMETER] deneme: " + denemeParam);
+
+        driver.quit();
+    }
+
 }

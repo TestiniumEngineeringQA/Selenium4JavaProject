@@ -18,6 +18,7 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.nio.charset.StandardCharsets;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -25,7 +26,7 @@ public class GoogleSearchTest {
     private RemoteWebDriver driver;
 
     private static final String WRITE_READ_EXCEL_UPLOAD_PATH = "/app/uploads/DenemeExcel.xlsx";
-
+    private static final String READ_TXT_UPLOAD_PATH = "/app/uploads/fileName.txt";
 
     @Test
     public void searchSelenium() {
@@ -182,6 +183,24 @@ public class GoogleSearchTest {
                 "SELENIUM4_UPLOAD_WRITE_READ_001",
                 "written"
         );
+    }
+
+    @Test
+    public void readUploadedTxtFile() throws IOException {
+        Path uploadedTxt = Path.of(
+                System.getProperty("readUploadedTxtPath", READ_TXT_UPLOAD_PATH)
+        );
+
+        assertTrue(
+                Files.isRegularFile(uploadedTxt),
+                () -> "Uploaded txt file was not found: " + uploadedTxt
+        );
+
+        String content = Files.readString(uploadedTxt, StandardCharsets.UTF_8);
+
+        System.out.printf("[FILE_READ_TEST] Txt file found: path=%s, size=%d bytes%n",
+                uploadedTxt, Files.size(uploadedTxt));
+        System.out.println(content);
     }
 
 }
